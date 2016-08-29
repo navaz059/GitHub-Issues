@@ -1,0 +1,21 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<body>
+		<div ng-app="myApp" ng-controller="myCtrl">	
+			<form ng-submit="submit()">
+				Enter link and hit enter:
+	  			<input type="text" ng-model="link" name="text" />
+	  			<input type="submit" id="submit" value="Submit" />
+			</form>
+			<h3>Link Of Repository you Submitted</h3>
+			<a ng-href="{{link}}/{{hash}}">{{link}}</a>
+			<h3>Owner of Repository: {{owner}}</h3>
+			<h3>Repository Name: {{repo}}</h3>
+			<p ng-model= total>Total Open Issues: {{total}}</p>
+  			<p ng-model = first>Open issues(< 7hrs):{{first}}</p>
+  			<p ng-model = second>Open Issues Between(< 24 hrs):{{second}}</p>
+  			<p ng-model = third>Open Issues more than 24 hrs:{{third}}</p>
+		</div>
+	</body>
+	<script src="JS/result.js"></script>
+</html>
