@@ -29,9 +29,10 @@ angular.module('myApp', [])
 
 	   	gettotalData(test_link);
 	   	var newLink = test_link.concat("/issues?state=open&sort=created&per_page=100");
-	   	getSevenData(newLink);
+	   	//Get total issues more than 7 days
+		getSevenDays(newLink);
+		//get total issues more than 24hrs
 	   	get24Data(newLink);
-		$scope.third = $scope.total - ($scope.first + $scope.second ) ;
 	};
 
 	//Get repos/<Owner-Name>/<Repo-Name>
@@ -43,16 +44,17 @@ angular.module('myApp', [])
 	}
 
 	//Get repos/<Owner-Name>/<Repo-Name>//issues?state=open&sort=created&per_page=100/since = 7hrs
-	function getSevenData(url){
+	function getSevenDays(url){
 		//curent date - 7hrs and convert it back to same format
 		var currentDate = new Date();
-	    currentDate.setHours(currentDate.getHours()-7);
+	    currentDate.setDate(currentDate.getDate()-7);
 //		alert(currentDate);
 		var n = currentDate.toISOString();
 		url = url.concat("&since="+n+"");
 		$http.get(url)
 		.then(function(response){
-			$scope.first = response.data.length;
+			$scope.second = response.data.length;
+			$scope.third = $scope.total - $scope.second;
 	});
 	}
 	//Get repos/<Owner-Name>/<Repo-Name>//issues?state=open&sort=created&per_page=100/since = 24hrs
@@ -64,8 +66,8 @@ angular.module('myApp', [])
 		url = url.concat("&since="+n+"");
 		$http.get(url)
 		.then(function(response){
-			$scope.second = response.data.length;
-			$scope.third = $scope.total - $scope.second;
+			$scope.first = response.data.length;
+			
 	});
 	}
 }]);

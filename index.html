@@ -12,9 +12,9 @@
 			<h3>Owner of Repository: {{owner}}</h3>
 			<h3>Repository Name: {{repo}}</h3>
 			<p ng-model= total>Total Open Issues: {{total}}</p>
-  			<p ng-model = first>Open issues(< 7hrs):{{first}}</p>
-  			<p ng-model = second>Open Issues Between(< 24 hrs):{{second}}</p>
-  			<p ng-model = third>Open Issues more than 24 hrs:{{third}}</p>
+  			<p ng-model = first>Open issues(< 24hrs):{{first}}</p>
+  			<p ng-model = second>Open Issues Between(24 hrs and 7 days):{{second - first}}</p>
+  			<p ng-model = third>Open Issues more than 7 days:{{third}}</p>
 		</div>
 	</body>
 	<script src="JS/result.js"></script>
